@@ -1,0 +1,6 @@
+.idea
+coverage
+node_modules
+.coveralls.yml
+npm-debug.*
+l.js
