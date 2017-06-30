@@ -7,6 +7,8 @@ const Chart = require('./Chart');
 const { toPercent } = require('../utils/number');
 const RectText = require('../core/RectText');
 const Point = require('../core/Point');
+const invariant = require('../utils/invariant');
+const types = require('../utils/types');
 
 /**
  * 面积区域占比图
@@ -36,8 +38,11 @@ class Box extends Chart {
   }
 
   setData = (data) => {
+    invariant(
+      types.isArray(data),
+      'TCharts: data of `Box` chart should be type of Array.'
+    );
     this.data = data;
-    // TODO 验证数据合法性
     this.generateLayer();
   };
 

@@ -66,7 +66,6 @@ class Element {
    * 绘制图形，产生图层，图层将用于最终的渲染
    * @param options { fill: '*', line: '-' }
    */
-  // eslint-disable-next-line
   draw = () => {
     invariant(false, 'TCharts: Element\'s method `draw` should be implemented by children Class.');
   };

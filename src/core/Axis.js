@@ -39,8 +39,14 @@ class Axis extends Element {
       types.typeof(pointX),
       types.typeof(pointY));
 
-    // TODO 验证水平和垂直
-    // TODO 验证 pointX 为水平，pointY 为垂直
+    invariant(
+      point0.y === pointX.y,
+      'TCharts: constructor props `pointX` of Axis should be an Horizontal line with `point0`.');
+
+    invariant(
+      point0.x === pointY.x,
+      'TCharts: constructor props `pointY` of Axis should be an Horizontal line with `point0`.');
+
     this.point0 = point0;
     this.pointX = pointX;
     this.pointY = pointY;
