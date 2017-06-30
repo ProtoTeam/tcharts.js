@@ -11,9 +11,15 @@
 const TCharts = require('tcharts.js');
 const { Bar, HBar, Box, Table } = TCharts；
 
-const barChart = new Bar(options); // instance the chart with options.
+const box = new Box(60, 20); // instance the chart with options.
+box.setData([
+  {value:100, name:'A'},
+  {value:100, name:'B'},
+  {value:100, name:'C'},
+  {value:100, name:'你好'},
+]);
 
-const barString = barChart.string();
+const boxString = box.string();
 
 console.log(chartString);
 ```
@@ -36,4 +42,6 @@ TODO
  
  ## 4. License
 
-ISC@[hustcc](https://github.com/hustcc).
+ISC@[ProtoTeam](https://github.com/ProtoTeam).
+
+
