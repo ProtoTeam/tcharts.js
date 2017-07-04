@@ -3,12 +3,37 @@
  * Contract: i@hust.cc
  */
 
-const what = require('what.js');
-
 module.exports = (Bar) => {
   test('1. draw a bar chart.', () => {
-    // TODO
-    expect(what(new Bar().string())).toEqual('string');
-    expect(what(new Bar().array())).toEqual('array');
+    const bar = new Bar(60, 20);
+    bar.setData([
+      {value:100, name:'A'},
+      {value:45, name:'B'},
+      {value:70, name:'C'},
+      {value:30, name:'D'},
+    ]);
+    console.log(bar.string());
+    const r = `^                                                            
+|     100                                                    
+|      +------+                                              
+|      |      |                                              
+|      |      |                                              
+|      |      |                                              
+|      |      |                    70                        
+|      |      |                    +------+                  
+|      |      |                    |      |                  
+|      |      |                    |      |                  
+|      |      |                    |      |                  
+|      |      |      45            |      |                  
+|      |      |      +------+      |      |                  
+|      |      |      |      |      |      |                  
+|      |      |      |      |      |      |      30          
+|      |      |      |      |      |      |      +------+    
+|      |      |      |      |      |      |      |      |    
+|      |      |      |      |      |      |      |      |    
+|      |      |      |      |      |      |      |      |    
++------+------+------+------+------+------+------+------+--->
+       A             B             C             D           `;
+    expect(bar.string()).toBe(r);
   });
 };

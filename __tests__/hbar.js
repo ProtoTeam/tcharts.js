@@ -3,12 +3,37 @@
  * Contract: i@hust.cc
  */
 
-const what = require('what.js');
-
 module.exports = (HBar) => {
   test('1. draw a hbar chart.', () => {
-    // TODO
-    expect(what(new HBar().string())).toEqual('string');
-    expect(what(new HBar().array())).toEqual('array');
+    const hbar = new HBar(60, 20);
+    hbar.setData([
+      {value: 100, name: 'A'},
+      {value: 45, name: 'B'},
+      {value: 70, name: 'C'},
+      {value: 30, name: 'D'},
+    ]);
+    console.log(hbar.string());
+    const r = `^                                                            
+|                                                            
+|                                                            
+|                                                            
++----------------+                                           
+|      D 30      |                                           
++----------------+                                           
+|                                                            
++--------------------------------------+                     
+|                 C 70                 |                     
++--------------------------------------+                     
+|                                                            
++------------------------+                                   
+|          B 45          |                                   
++------------------------+                                   
+|                                                            
++-------------------------------------------------------+    
+|                         A 100                         |    
++-------------------------------------------------------+    
+|                                                            
++----------------------------------------------------------->`;
+    expect(hbar.string()).toBe(r);
   });
 };

@@ -3,9 +3,7 @@
  */
 
 
-// eslint-disable-next-line
 const { Box, Bar, HBar, Table } = require('../src/');
-// eslint-disable-next-line
 const { Axis, Line, Point, Rect, Text, RectText } = require('../src/core/');
 
 
@@ -23,7 +21,7 @@ describe('Testcases of tcharts.js', () => {
   });
 
   describe('4. Table chart.', () => {
-    require('./table')(Table);
+    // require('./table')(Table);
   });
 
   describe('5. Point element.', () => {
