@@ -15,6 +15,7 @@ const Layer = require('../core/Layer');
 class Chart {
   constructor(width, height) {
     this.resetSize(width, height);
+    this.data = [];
   }
 
   resetSize = (width, height) => {
@@ -27,7 +28,6 @@ class Chart {
       x2: this.width,
       y2: this.height,
     });
-    this.data = [];
   };
 
   /**

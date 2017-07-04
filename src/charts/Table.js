@@ -31,19 +31,19 @@ const Point = require('../core/Point');
  *
  */
 class Table extends Chart {
-  constructor(rate = 1.2) {
+  constructor(rate = 0) {
     super(0, 0); // table 的宽高有内容自动伸缩
-    this.rate = rate; // 比例，比如文字宽度为10，则表格 cell 宽度为 12
+    this.rate = rate; // 比例，比如文字宽度为10, rate = 0.1，则表格 cell 宽度为 12
   }
 
   // 通过内容计算每一列的宽高
   _calColSizes = (data, row, col) => {
-    const sizes = new Array(col).fill(0);
+    let sizes = new Array(col).fill(0);
     data.forEach((d) => {
-      sizes.map((s, i) => Math.max(WordWidth(d[i]), s));
+      sizes = sizes.map((s, i) => Math.max(WordWidth(d[i]), s));
     });
     // 乘以 rate
-    sizes.map(s => round(s * this.rate));
+    sizes = sizes.map(s => s + round(s * this.rate) * 2);
     return sizes;
   };
 
@@ -82,8 +82,9 @@ class Table extends Chart {
   };
 
   _calTableSizes = (colSizes, row, col) => {
-    const height = row * 2 + 1;
-    const width = col + 1 + colSizes.reduce((r, ele) => r + ele);
+    // width height 是从 0 开始计数的，所以这里的 width height 比实际的 - 1
+    const height = row * 2;
+    const width = col + colSizes.reduce((r, ele) => r + ele);
     return {
       width,
       height,
@@ -97,7 +98,6 @@ class Table extends Chart {
     );
     const { row, col } = this._getRowAndCol(data);
     const updatedData = this._fullFillData(data, row, col);
-    console.log(updatedData);
     this.data = updatedData;
 
     const colSizes = this._calColSizes(this.data, row, col);
@@ -116,12 +116,12 @@ class Table extends Chart {
     let startY = 0;
 
     for (let i = 0; i < row; i += 1) {
+      startX = 0;
       for (let j = 0; j < col; j += 1) {
-        console.log(row, col);
         rectTexts.push(new RectText(
           new Point(startX, startY),
           new Point(startX + colSizes[j] + 1, startY + 2),
-          this.data[i][j]).draw());
+          this.data[row - i - 1][j]).draw());
 
         startX += (colSizes[j] + 1);
       }

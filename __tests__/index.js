@@ -8,43 +8,43 @@ const { Axis, Line, Point, Rect, Text, RectText } = require('../src/core/');
 
 
 describe('Testcases of tcharts.js', () => {
-  describe('1. Box chart.', () => {
-    require('./box')(Box);
-  });
-
-  describe('2. Bar chart.', () => {
-    require('./bar')(Bar);
-  });
-
-  describe('3. HBar chart.', () => {
-    require('./hbar')(HBar);
-  });
-
-  describe('4. Table chart.', () => {
-    // require('./table')(Table);
-  });
-
-  describe('5. Point element.', () => {
+  describe('1. Point element.', () => {
     require('./point')(Point);
   });
 
-  describe('6. Line element.', () => {
+  describe('2. Line element.', () => {
     require('./line')(Point, Line);
   });
 
-  describe('7. Text element.', () => {
+  describe('3. Text element.', () => {
     require('./text')(Point, Text);
   });
 
-  describe('8. Rect element.', () => {
+  describe('4. Rect element.', () => {
     require('./rect')(Point, Rect);
   });
 
-  describe('9. RectText element.', () => {
+  describe('5. RectText element.', () => {
     require('./recttext')(Point, RectText);
   });
 
-  describe('10. Axis element.', () => {
+  describe('6. Axis element.', () => {
     require('./axis')(Point, Axis);
+  });
+
+  describe('7. Box chart.', () => {
+    require('./box')(Box);
+  });
+
+  describe('8. Bar chart.', () => {
+    require('./bar')(Bar);
+  });
+
+  describe('9. HBar chart.', () => {
+    require('./hbar')(HBar);
+  });
+
+  describe('10. Table chart.', () => {
+    require('./table')(Table);
   });
 });
