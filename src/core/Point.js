@@ -41,6 +41,10 @@ class Point extends Element {
     this.layer.ascii = [[options.fill]];
     return this.layer;
   };
+
+  get CLASSNAME() {
+    return 'Point';
+  }
 }
 
 module.exports = Point;

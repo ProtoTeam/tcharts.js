@@ -79,6 +79,10 @@ class Axis extends Element {
       this.pointY.draw({ fill: '^' })  // y 轴箭头
     );
   };
+
+  get CLASSNAME() {
+    return 'Axis';
+  }
 }
 
 module.exports = Axis;

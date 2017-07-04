@@ -53,6 +53,14 @@
       {
         "min": 1
       }
+    ],
+    "class-methods-use-this": [
+      1,
+      {
+        "exceptMethods": [
+          "CLASSNAME"
+        ]
+      }
     ]
   }
 }

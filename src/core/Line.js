@@ -70,6 +70,10 @@ class Line extends Element {
     this.layer.ascii = ascii;
     return this.layer;
   };
+
+  get CLASSNAME() {
+    return 'Line';
+  }
 }
 
 module.exports = Line;

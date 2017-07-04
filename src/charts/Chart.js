@@ -9,11 +9,15 @@ const Layer = require('../core/Layer');
  * 图表的基类
  * 1. 拥有画布的宽高属性
  * 2. 可以设置图形的 option 配置
- * 3. 拥有将图层变成字符串的能力 print();
+ * 3. 拥有将图层变成字符串的能力 string() / array();
  * 4. 拥有一个图层，这个是最最终图层
  */
 class Chart {
   constructor(width, height) {
+    this.resetSize(width, height);
+  }
+
+  resetSize = (width, height) => {
     this.width = width;
     this.height = height;
     // 创建一个空的图层
@@ -24,7 +28,7 @@ class Chart {
       y2: this.height,
     });
     this.data = [];
-  }
+  };
 
   /**
    * 设置图标的 data

@@ -8,8 +8,6 @@
  *  get what is the type of the input var.
  **/
 const what = require('what.js');
-// TODO 循环引用
-// const Point = require('../core/Point');
 
 /**
  * How to usage
@@ -53,9 +51,9 @@ const isBool = v => what(v) === 'boolean';
 
 const isEmpty = v => v === null || v === undefined;
 
-const isPoint = v => !!v; // TODO
+const isPoint = v => v.CLASSNAME === 'Point';
 
-const typeOf = v => what(v); // TODO
+const typeOf = v => v.CLASSNAME || what(v);
 
 module.exports = {
   isNumber,

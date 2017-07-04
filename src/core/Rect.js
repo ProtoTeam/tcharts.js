@@ -67,6 +67,9 @@ class Rect extends Element {
     // 合并图层部分
     return this.layer.mergeArray(lines.concat(corners));
   };
+  get CLASSNAME() {
+    return 'Rect';
+  }
 }
 
 module.exports = Rect;

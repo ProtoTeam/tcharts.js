@@ -69,6 +69,10 @@ class Element {
   draw = () => {
     invariant(false, 'TCharts: Element\'s method `draw` should be implemented by children Class.');
   };
+
+  get CLASSNAME() {
+    invariant(false, 'TCharts: Element\'s method `CLASSNAME` should be implemented by children Class.');
+  }
 }
 
 module.exports = Element;

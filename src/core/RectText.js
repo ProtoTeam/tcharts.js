@@ -58,6 +58,10 @@ class RectText extends Element {
     // 合并图层
     return this.layer.merge(rect.draw(), text.draw());
   };
+
+  get CLASSNAME() {
+    return 'RectText';
+  }
 }
 
 module.exports = RectText;

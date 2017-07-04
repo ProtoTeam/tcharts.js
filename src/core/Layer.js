@@ -126,6 +126,10 @@ class Layer {
    * 返回图表的文本数组，逐行打印就可以显示了
    */
   array = () => this.ascii.slice().reverse();
+
+  get CLASSNAME() {
+    return 'Layer';
+  }
 }
 
 module.exports = Layer;

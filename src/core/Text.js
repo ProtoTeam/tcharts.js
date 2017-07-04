@@ -49,6 +49,10 @@ class Text extends Element {
     this.layer.ascii[0][0] = this.text;
     return this.layer;
   };
+
+  get CLASSNAME() {
+    return 'Text';
+  }
 }
 
 module.exports = Text;
