@@ -4,6 +4,7 @@
 
 const Chart = require('./Chart');
 const invariant = require('../utils/invariant');
+const { round } = require('../utils/number');
 const types = require('../utils/types');
 const Axis = require('../core/Axis');
 const Point = require('../core/Point');
@@ -14,34 +15,37 @@ const Rect = require('../core/Rect');
  * 柱形图
  *
  * ^
- * |    70
+ * |    A:70
  * |   +---+
  * |   |   |
- * |   |   |              50
+ * |   |   |              C:50
  * |   |   |             +---+
  * |   |   |             |   |
  * |   |   |             |   |
- * |   |   |     30      |   |
+ * |   |   |     B:30    |   |
  * |   |   |    +---+    |   |
  * |   |   |    |   |    |   |
  * |   |   |    |   |    |   |
  * |   |   |    |   |    |   |
  * +---+---+----+---+----+---+----->
- *       A        B        C
+ *
  *
  * data 结构：
  [
-   {value:335, name:'直接访问'},
-   {value:310, name:'邮件营销'},
-   {value:274, name:'联盟广告'},
-   {value:235, name:'视频广告'},
-   {value:400, name:'搜索引擎'},
+   {value:335, name:'A'},
+   {value:310, name:'B'},
+   {value:274, name:'C'},
+   {value:235, name:'D'},
+   {value:400, name:'E'},
  ]
  *
  */
 class Bar extends Chart {
-  constructor(width = 100, height = 50) {
-    super(width, height);
+  constructor(minWidth = 20, heightRate = 0.4) {
+    super(0, 0);
+    this.minWidth = minWidth;
+    this.heightRate = heightRate; // 高度 / 宽度比例
+    this.barWidth = 2;
   }
 
   setData = (data) => {
@@ -50,6 +54,11 @@ class Bar extends Chart {
       'TCharts: data of `Bar` chart should be type of Array.'
     );
     this.data = data;
+    // 计算宽高
+    let width = (this.data.length * 2 + 1) * (this.barWidth + 1);
+    width = Math.max(width, this.minWidth);
+    const height = round(width * this.heightRate);
+    this.resetSize(width, height);
     this.generateLayer();
   };
 
@@ -57,47 +66,44 @@ class Bar extends Chart {
    * 具体图表的实现
    */
   generateLayer = () => {
-    // 1. 计算最大的值
-    const valueLst = this.data.map(ele => ele.value);
-    const maxValue = Math.max(...valueLst);
+    // 1. 构造 text 键值
+    let maxValue = 0;
+    this.data.forEach((d) => {
+      d.text = `${d.name}:${d.value}`;
+      maxValue = Math.max(maxValue, d.value);
+    });
 
-    // 2. 计算每个数值所占高度
-    this.data.forEach((ele) => {
-      ele.height = Math.round((ele.value / maxValue) * (this.height - 2));
+    // 2. 计算每个数值的柱形图高度d
+    this.data.forEach((d) => {
+      d.height = round((d.value / maxValue) * (this.height - 2)); // -2 是为了显示文本
     });
 
     // 3. 绘制坐标轴图层
-    const point0 = new Point(0, 1);
-    const pointX = new Point(this.width, 1);
-    const pointY = new Point(0, this.height);
-    const axisLayer = new Axis(point0, pointX, pointY).draw();
+    const axisLayer = new Axis(
+      new Point(0, 0),
+      new Point(this.width, 0),
+      new Point(0, this.height)
+    ).draw();
 
     // 4. 绘制矩形图层
-    const step = Math.round((this.width - 2) / (2 * this.data.length));
-    const rectLayers = this.data.map((ele, index) => {
-      const startPoint = new Point((2 * index + 1) * step, 1);
-      const endPoint = new Point((2 * index + 2) * step, ele.height);
-      return new Rect(startPoint, endPoint).draw();
-    });
+    const widthStep = round(this.width / (this.data.length * 2 + 1));
+    const rectLayers = this.data.map((d, i) => new Rect(
+      new Point(widthStep * (i * 2 + 1), 0),
+      new Point(widthStep * (i * 2 + 2), d.height)).draw()
+    );
 
-    // 5. 绘制文字图层
-    const nameLayer = this.data.map((ele, index) => {
-      const point = new Point((2 * index + 1) * step, 0);
-      return new Text(point, ele.name).draw();
-    });
+    // 5. 绘制文字图层(局左对齐)
+    const textLayers = this.data.map((d, i) => new Text(
+      new Point(widthStep * (i * 2 + 1), d.height + 1), // 文本高度为 1
+      d.text,
+      'left').draw()
+    );
 
-    // 6. 绘制数据图层
-    const dataLayer = this.data.map((ele, index) => {
-      const point = new Point((2 * index + 1) * step, ele.height + 1);
-      return new Text(point, ele.value.toString()).draw();
-    });
-
-    // 7. 合并图层
+    // 6. 合并图层
     let layers = [];
     layers.push(axisLayer);
     layers = layers.concat(rectLayers);
-    layers = layers.concat(nameLayer);
-    layers = layers.concat(dataLayer);
+    layers = layers.concat(textLayers);
 
     this.layer.mergeArray(layers);
   }

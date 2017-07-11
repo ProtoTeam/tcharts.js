@@ -3,7 +3,7 @@
  */
 
 const evenly = require('evenly');
-const WordWidth = require('word-width');
+const { wordWidth } = require('../utils/string');
 const invariant = require('../utils/invariant');
 const types = require('../utils/types');
 const { fillMatrix } = require('../utils/array');
@@ -11,6 +11,7 @@ const Element = require('./Element');
 
 /**
  * 一段文本（目前仅支持横向）
+ * FIXME 暂时不支持中文
  *
  * hello world，这个是一个控制台图标库
  */
@@ -32,7 +33,7 @@ class Text extends Element {
     this.align = align;
 
 
-    const textWidth = WordWidth(this.text);
+    const textWidth = wordWidth(this.text);
 
     if (this.align === 'center') {
       // 居中显示
@@ -48,7 +49,7 @@ class Text extends Element {
       this.box = {
         x1: p.x,
         y1: p.y,
-        x2: p.x + textWidth + 1,
+        x2: p.x + textWidth - 1,
         y2: p.y,
       };
     } else {
@@ -60,7 +61,6 @@ class Text extends Element {
         y2: p.y,
       };
     }
-
 
     this.initLayer();
   }

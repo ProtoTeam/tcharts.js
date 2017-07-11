@@ -13,6 +13,7 @@ const toPercent = (number, fixed = 2) => `${round(number, fixed + 2) * 100}%`;
 
 
 module.exports = {
+  round,
   center,
   floorCenter,
   toPercent,

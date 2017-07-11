@@ -39,26 +39,26 @@ class Layer {
   }
 
   // box 盒模型是不是大于
-  gt = (layer, includeEqual = true) => {
-     if (includeEqual) {
-       if (
-         this.box.x1 <= layer.box.x1 &&
-         this.box.y1 <= layer.box.y1 &&
-         this.box.x2 >= layer.box.x2 &&
-         this.box.y2 >= layer.box.y2) {
-         return true;
-       }
-       return false;
-     }
-    if (
-      this.box.x1 < layer.box.x1 &&
-      this.box.y1 < layer.box.y1 &&
-      this.box.x2 > layer.box.x2 &&
-      this.box.y2 > layer.box.y2) {
-      return true;
-    }
-     return false;
-  };
+  // gt = (layer, includeEqual = true) => {
+  //    if (includeEqual) {
+  //      if (
+  //        this.box.x1 <= layer.box.x1 &&
+  //        this.box.y1 <= layer.box.y1 &&
+  //        this.box.x2 >= layer.box.x2 &&
+  //        this.box.y2 >= layer.box.y2) {
+  //        return true;
+  //      }
+  //      return false;
+  //    }
+  //   if (
+  //     this.box.x1 < layer.box.x1 &&
+  //     this.box.y1 < layer.box.y1 &&
+  //     this.box.x2 > layer.box.x2 &&
+  //     this.box.y2 > layer.box.y2) {
+  //     return true;
+  //   }
+  //    return false;
+  // };
 
   /**
    * 按顺序合并另外的 layers
@@ -72,21 +72,25 @@ class Layer {
    */
   mergeOne = (layer) => {
     // 校验：前提条件是，this 的范围肯定大于 layer
-    invariant(
-      this.gt(layer),
-      'TCharts: layer\'box should be greater then layer which will be merged.');
+    // invariant(
+    //   this.gt(layer),
+    //   'TCharts: layer\'box should be greater then layer which will be merged.');
 
     // 算法
     const { x1, y1, x2, y2 } = layer.box;
-    const { x1: thisX1, y1: thisY1 } = this.box;
+    const { x1: thisX1, y1: thisY1, x2: thisX2, y2: thisY2 } = this.box;
+    const rangeX1 = Math.max(x1, thisX1);
+    const rangeY1 = Math.max(y1, thisY1);
+    const rangeX2 = Math.min(x2, thisX2);
+    const rangeY2 = Math.min(y2, thisY2);
     // box 的偏移量
     let i1;
     let i2;
-    for (let i = x1; i <= x2; i += 1) {
+    for (let i = rangeX1; i <= rangeX2; i += 1) {
       // 减少计算量
       i1 = i - thisX1;
       i2 = i - x1;
-      for (let j = y1; j <= y2; j += 1) {
+      for (let j = rangeY1; j <= rangeY2; j += 1) {
         this.ascii[j - thisY1][i1] = layer.ascii[j - y1][i2];
       }
     }

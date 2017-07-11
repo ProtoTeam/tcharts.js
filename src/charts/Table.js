@@ -3,13 +3,14 @@
  */
 
 const iu = require('immutability-util');
-const WordWidth = require('word-width');
-const round = require('fixed-round');
+
 const Chart = require('./Chart');
 const invariant = require('../utils/invariant');
 const types = require('../utils/types');
 const RectText = require('../core/RectText');
 const Point = require('../core/Point');
+const { wordWidth } = require('../utils/string');
+const { round } = require('../utils/number');
 
 /**
  * 表格
@@ -40,7 +41,7 @@ class Table extends Chart {
   _calColSizes = (data, row, col) => {
     let sizes = new Array(col).fill(0);
     data.forEach((d) => {
-      sizes = sizes.map((s, i) => Math.max(WordWidth(d[i]), s));
+      sizes = sizes.map((s, i) => Math.max(wordWidth(d[i]), s));
     });
     // 乘以 rate
     sizes = sizes.map(s => s + round(s * this.rate) * 2);
