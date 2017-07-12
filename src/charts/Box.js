@@ -58,7 +58,7 @@ class Box extends Chart {
     // 2. 计算占比
     this.data.forEach((d) => {
       d.percent = d.value / total;
-      d.text = `${d.name}:${toPercent(d.percent)}`;
+      d.text = `${d.name}:${toPercent(d.percent, 0)}`;
     });
     // 3. 降序排序
     this.data.sort((x, y) => y.value - x.value);
@@ -67,12 +67,11 @@ class Box extends Chart {
     const percents = this.data.map(e => e.percent);
     const plan = areaDivide(this.width, this.height, percents);
 
-    const layers = plan.map((p, index) => {
-      const startPoint = new Point(p.x1, p.y1);
-      const endPoint = new Point(p.x2, p.y2);
-      const layer = new RectText(startPoint, endPoint, this.data[index].text).draw();
-      return layer;
-    });
+    const layers = plan.map((p, index) => new RectText(
+      new Point(p.x1, p.y1),
+      new Point(p.x2, p.y2),
+      this.data[index].text).draw()
+    );
 
     this.layer.mergeArray(layers);
   };
