@@ -2,13 +2,14 @@
  * Created by hustcc.
  */
 
+const VT = require('variable-type');
 const areaDivide = require('area-divide');
 const Chart = require('./Chart');
 const { toPercent } = require('../utils/number');
 const RectText = require('../core/RectText');
 const Point = require('../core/Point');
 const invariant = require('../utils/invariant');
-const types = require('../utils/types');
+const { BOX_DATA_TYPE } = require('../const');
 
 /**
  * 面积区域占比图
@@ -39,7 +40,7 @@ class Box extends Chart {
 
   setData = (data) => {
     invariant(
-      types.isArray(data),
+      VT.check(data, BOX_DATA_TYPE),
       'TCharts: data of `Box` chart should be type of Array.'
     );
     this.data = data;

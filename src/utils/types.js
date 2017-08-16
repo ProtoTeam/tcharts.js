@@ -2,54 +2,24 @@
  * Created by hustcc.
  */
 
-/**
- *  what( var ) -> String
- *  - var: the var which want to typeof
- *  get what is the type of the input var.
- **/
+const VT = require('variable-type');
 const what = require('what.js');
 
-/**
- * How to usage
- *
 
- what({}); // 'object'
- what({abc: 123}); // 'object'
+const isNumber = v => VT.check(v, VT.number);
 
- what([]); // 'array'
- what([123, 'abc']); // 'array'
+const isString = v => VT.check(v, VT.string);
 
- what(function() {}); // 'function'
- what(setTimeout); // 'function'
+const isArray = v => VT.check(v, VT.array);
 
- what(/^what\.js$/); // 'regexp'
+const isObject = v => VT.check(v, VT.object);
 
- what(new Date()); // 'date'
+const isBool = v => VT.check(v, VT.bool);
 
- what(null); // 'null'
- what(undefined); // 'undefined'
-
- what('abc'); // 'string'
- what(123); // 'number'
- what(12.3); // 'number'
-
- what(true); // 'boolean'
- what(false); // 'boolean'
-
- *
- */
-
-const isNumber = v => what(v) === 'number';
-
-const isString = v => what(v) === 'string';
-
-const isArray = v => what(v) === 'array';
-
-const isObject = v => what(v) === 'object';
-
-const isBool = v => what(v) === 'boolean';
-
-const isEmpty = v => v === null || v === undefined;
+const isEmpty = v => VT.check(v, VT.or([
+  VT.null,
+  VT.undefined
+]));
 
 const isPoint = v => v.CLASSNAME === 'Point';
 

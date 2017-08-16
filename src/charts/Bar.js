@@ -2,14 +2,15 @@
  * Created by hustcc.
  */
 
+const VT = require('variable-type');
 const Chart = require('./Chart');
 const invariant = require('../utils/invariant');
 const { round } = require('../utils/number');
-const types = require('../utils/types');
 const Axis = require('../core/Axis');
 const Point = require('../core/Point');
 const Text = require('../core/Text');
 const Rect = require('../core/Rect');
+const { BAR_DATA_TYPE } = require('../const');
 
 /**
  * 柱形图
@@ -50,7 +51,7 @@ class Bar extends Chart {
 
   setData = (data) => {
     invariant(
-      types.isArray(data),
+      VT.check(data, BAR_DATA_TYPE),
       'TCharts: data of `Bar` chart should be type of Array.'
     );
     this.data = data;

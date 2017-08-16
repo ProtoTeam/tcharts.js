@@ -3,14 +3,15 @@
  */
 
 const iu = require('immutability-util');
+const VT = require('variable-type');
 
 const Chart = require('./Chart');
 const invariant = require('../utils/invariant');
-const types = require('../utils/types');
 const RectText = require('../core/RectText');
 const Point = require('../core/Point');
 const { wordWidth } = require('../utils/string');
 const { round } = require('../utils/number');
+const { TABLE_DATA_TYPE } = require('../const');
 
 /**
  * 表格
@@ -94,7 +95,7 @@ class Table extends Chart {
 
   setData = (data) => {
     invariant(
-      types.isArray(data),
+      VT.check(data, TABLE_DATA_TYPE),
       'TCharts: data of `Table` chart should be type of matrix Array.'
     );
     const { row, col } = this._getRowAndCol(data);

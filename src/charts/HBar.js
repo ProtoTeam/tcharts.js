@@ -2,14 +2,15 @@
  * Created by hustcc.
  */
 
+const VT = require('variable-type');
 const Chart = require('./Chart');
 const invariant = require('../utils/invariant');
 const { round } = require('../utils/number');
-const types = require('../utils/types');
 const Axis = require('../core/Axis');
 const Point = require('../core/Point');
 const Rect = require('../core/Rect');
 const Text = require('../core/Text');
+const { HBAR_DATA_TYPE } = require('../const');
 
 /**
  * 横向柱形图
@@ -43,7 +44,7 @@ class HBar extends Chart {
 
   setData = (data) => {
     invariant(
-      types.isArray(data),
+      VT.check(data, HBAR_DATA_TYPE),
       'TCharts: data of `HBar` chart should be type of Array.'
     );
     this.data = data;
