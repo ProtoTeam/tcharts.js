@@ -1,4 +1,4 @@
-# tcharts.js
+# [tcharts.js](http://tcharts.org)
 
 > Lightweight and fast terminal ASCII charts for nodejs and browser.
 
@@ -31,16 +31,11 @@ console.log(chartString);
  - `HBar`: horizontal bar chart.
  - `Box`: box chart showing with a square.
  - `Table`: data table in terminal.
- 
- 
- ## 3. Configure options
- 
-```js
-TODO
-```
 
- 
- ## 4. License
+How to use them, you can see the testcases in `__tests__` folder.
+
+
+## 3. License
 
 ISC@[ProtoTeam](https://github.com/ProtoTeam).
 
