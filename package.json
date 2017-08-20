@@ -1,8 +1,8 @@
 {
   "name": "tcharts.js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Lightweight and fast terminal ASCII charts for nodejs and browser.",
-  "main": "dist/tcharts.js.js",
+  "main": "dist/tcharts.min.js",
   "files": [
     "dist"
   ],
