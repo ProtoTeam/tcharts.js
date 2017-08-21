@@ -1,6 +1,8 @@
-# [tcharts.js](http://tcharts.org)
+# tcharts.js
 
-> Lightweight and fast terminal ASCII charts for nodejs and browser.
+> [TCharts.js](http://tcharts.org) is a Lightweight and fast terminal ASCII charts for nodejs and browser.
+
+[![Ver](https://img.shields.io/npm/v/tcharts.js.svg)](https://www.npmjs.com/package/tcharts.js) [![Build Status](https://travis-ci.org/TCharts/tcharts.js.svg?branch=master)](https://travis-ci.org/TCharts/tcharts.js)
 
 
 ## 1. Install & Usage
@@ -35,7 +37,20 @@ console.log(chartString);
 How to use them, you can see the testcases in `__tests__` folder.
 
 
-## 3. License
+## 3. Build & Test
+
+```
+npm i
+
+npm run build
+
+npm test
+```
+
+Then you can see the result of test cases.
+
+
+## 4. License
 
 ISC@[ProtoTeam](https://github.com/ProtoTeam).
 
