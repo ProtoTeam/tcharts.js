@@ -3,7 +3,7 @@
  * Contract: i@hust.cc
  */
 
-const wordWidth = text => (text ? text.length : 0);
+const wordWidth = require('word-width');
 
 module.exports = {
   wordWidth,
