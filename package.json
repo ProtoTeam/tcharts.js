@@ -11,7 +11,7 @@
     "cover": "jest --coverage",
     "test": "npm run lint && npm run cover",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "build": "webpack && npm run test"
+    "build": "webpack && cross-env NODE_ENV=production jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "coveralls": "^2.13.1",
-    "cross-env": "^5.0.0",
+    "cross-env": "^5.0.5",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.1",
     "eslint-config-airbnb-base": "^11.2.0",

@@ -2,8 +2,9 @@
  * Created by hustcc on 17/6/21.
  */
 
-
-const { Box, Bar, HBar, Table } = require('../src/');
+// test for library and test
+// eslint-disable-next-line
+const { Box, Bar, HBar, Table } = require(process.env.NODE_ENV !== 'production' ? '../src/' : '../');
 const { Axis, Line, Point, Rect, Text, RectText } = require('../src/core/');
 
 
