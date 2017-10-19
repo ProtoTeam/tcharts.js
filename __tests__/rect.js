@@ -8,7 +8,8 @@ module.exports = (Point, Rect) => {
   test('1. draw a rect element.', () => {
     const start = new Point(0, 0);
     const end = new Point(4, 3);
-    const rectLayer = new Rect(start, end).draw();
+    const rect = new Rect(start, end);
+    const rectLayer = rect.draw();
 
     expect(rectLayer.box).toEqual({
       x1: 0,
@@ -22,5 +23,8 @@ module.exports = (Point, Rect) => {
       '|   |'.split(''),
       '+---+'.split(''),
     ]);
+
+    expect(rect.clone().CLASSNAME).toBe('Rect');
+    rect.toString();
   });
 };

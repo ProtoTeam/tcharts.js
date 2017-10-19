@@ -9,6 +9,7 @@ module.exports = (Point, Axis) => {
     const pointX = new Point(20, 0);
     const pointY = new Point(0, 5);
     const axis = new Axis(point0, pointX, pointY);
+    console.log(axis.toString());
     const axisLayer = axis.draw();
 
     expect(axisLayer.box).toEqual({
@@ -25,6 +26,16 @@ module.exports = (Point, Axis) => {
       '|                    '.split(''),
       '+------------------->'.split(''),
     ]);
+    expect(axis.clone().draw().array()).toEqual([
+      '^                    '.split(''),
+      '|                    '.split(''),
+      '|                    '.split(''),
+      '|                    '.split(''),
+      '|                    '.split(''),
+      '+------------------->'.split(''),
+    ]);
     console.log(axisLayer.string());
+    expect(axis.CLASSNAME).toBe('Axis');
+    expect(axisLayer.CLASSNAME).toBe('Layer');
   });
 };

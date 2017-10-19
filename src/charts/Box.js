@@ -33,7 +33,7 @@ const { BOX_DATA_TYPE } = require('../const');
  *
  */
 class Box extends Chart {
-  constructor(width = 100, height = 50) {
+  constructor(width = 60, height = 20) {
     super(width, height);
   }
 

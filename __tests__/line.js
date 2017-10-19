@@ -8,7 +8,8 @@ module.exports = (Point, Line) => {
   test('1. draw a line element.', () => {
     let start = new Point(0, 0);
     let end = new Point(0, 50);
-    let lineLayer = new Line(start, end).draw();
+    const line = new Line(start, end);
+    let lineLayer = line.draw();
 
     expect(lineLayer.box).toEqual({
       x1: 0,
@@ -29,5 +30,8 @@ module.exports = (Point, Line) => {
       y2: 0,
     });
     expect(lineLayer.array()).toEqual(new Array(1).fill(new Array(51).fill('-')));
+
+    expect(line.clone().CLASSNAME).toBe('Line');
+    expect(line.toString()).toBe('Line(Point(0, 0), Point(0, 50))');
   });
 };

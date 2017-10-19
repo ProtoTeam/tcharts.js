@@ -2,7 +2,6 @@
  * Created by hustcc.
  */
 
-const invariant = require('../utils/invariant');
 const Layer = require('../core/Layer');
 
 /**
@@ -30,28 +29,11 @@ class Chart {
     });
   };
 
-  /**
-   * 设置图标的 data
-   * @param data
-   */
-  // eslint-disable-next-line
-  setData = (data) => {
-    invariant(false, 'TCharts: Chart\'s method `setData` should be implemented by children Class.');
-  };
-
   // 返回图表的文本，可以直接用脑输出
   string = () => this.layer.string();
 
   // 返回图表的文本数组，逐行打印就可以显示了
   array = () => this.layer.array();
-
-  generateLayer = () => {
-    invariant(false, 'TCharts: Chart\'s method `generateLayer` should be implemented by children Class.');
-  };
-
-  // toString = () => {
-  //   invariant(false, 'TCharts: Chart\'s method `toString` should be implemented by children Class.');
-  // };
 }
 
 module.exports = Chart;

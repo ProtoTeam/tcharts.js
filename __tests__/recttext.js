@@ -7,7 +7,8 @@ module.exports = (Point, RectText) => {
   test('1. draw a rect-text element.', () => {
     const start = new Point(0, 0);
     const end = new Point(10, 5);
-    const rectTextLayer = new RectText(start, end, 'TC').draw();
+    const reactText = new RectText(start, end, 'TC');
+    const rectTextLayer = reactText.draw();
 
     expect(rectTextLayer.box).toEqual({
       x1: 0,
@@ -23,5 +24,8 @@ module.exports = (Point, RectText) => {
       '|         |'.split(''),
       '+---------+'.split(''),
     ]);
+
+    expect(reactText.clone().CLASSNAME).toBe('RectText');
+    reactText.toString();
   });
 };

@@ -29,9 +29,9 @@ class Element {
     this.layer = Layer.emptyInstance(this.box, this.zIndex);
   };
 
-  setZIndex = (zIndex = 0) => {
-    this.zIndex = zIndex;
-  };
+  // setZIndex = (zIndex = 0) => {
+  //   this.zIndex = zIndex;
+  // };
 
   /**
    * 获得中心点的坐标
@@ -55,24 +55,24 @@ class Element {
     };
   };
 
-  clone = () => new Element();
-
-  toString = () => {
-    invariant(false, 'TCharts: Element\'s method `toString` should be implemented by children Class.');
-  };
-
-
-  /**
-   * 绘制图形，产生图层，图层将用于最终的渲染
-   * @param options { fill: '*', line: '-' }
-   */
-  draw = () => {
-    invariant(false, 'TCharts: Element\'s method `draw` should be implemented by children Class.');
-  };
-
-  get CLASSNAME() {
-    invariant(false, 'TCharts: Element\'s method `CLASSNAME` should be implemented by children Class.');
-  }
+  // clone = () => new Element();
+  //
+  // toString = () => {
+  //   invariant(false, 'TCharts: Element\'s method `toString` should be implemented by children Class.');
+  // };
+  //
+  //
+  // /**
+  //  * 绘制图形，产生图层，图层将用于最终的渲染
+  //  * @param options { fill: '*', line: '-' }
+  //  */
+  // draw = () => {
+  //   invariant(false, 'TCharts: Element\'s method `draw` should be implemented by children Class.');
+  // };
+  //
+  // get CLASSNAME() {
+  //   invariant(false, 'TCharts: Element\'s method `CLASSNAME` should be implemented by children Class.');
+  // }
 }
 
 module.exports = Element;

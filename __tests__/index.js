@@ -6,6 +6,8 @@
 // eslint-disable-next-line
 const { Box, Bar, HBar, Table } = require(process.env.NODE_ENV !== 'production' ? '../src/' : '../');
 const { Axis, Line, Point, Rect, Text, RectText } = require('../src/core/');
+const StringUtils = require('../src/utils/string');
+const NumberUtils = require('../src/utils/number');
 
 
 describe('Testcases of tcharts.js', () => {
@@ -47,5 +49,9 @@ describe('Testcases of tcharts.js', () => {
 
   describe('10. Table chart.', () => {
     require('./table')(Table);
+  });
+
+  describe('11. utils.', () => {
+    require('./utils')(StringUtils, NumberUtils);
   });
 });

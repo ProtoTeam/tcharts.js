@@ -36,7 +36,7 @@ module.exports = (Box) => {
 +--------------+--------------------------------------------+`.trim();
     expect(box.string()).toBe(r);
 
-    box = new Box(35, 10);
+    box = new Box();
     box.setData([
       {value:100, name:'A'},
       {value:100, name:'B'},
