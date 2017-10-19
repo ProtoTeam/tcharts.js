@@ -1,7 +1,6 @@
 /**
  * Created by hustcc.
  */
-const invariant = require('../utils/invariant');
 const { floorCenter } = require('../utils/number');
 const Layer = require('./Layer');
 /**

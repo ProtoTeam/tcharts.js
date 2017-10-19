@@ -45,6 +45,5 @@ module.exports = (Bar) => {
     ]);
     bar.array();
     console.log(bar.string());
-
   });
 };
