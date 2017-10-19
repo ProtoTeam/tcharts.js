@@ -26,11 +26,11 @@ class RectText extends Element {
     super();
     // 参数必须是 point 类型的
     invariant(
-      types.isPoint(start) && types.isPoint(end) && types.isString(text),
-      'TCharts: constructor props of Rect should be (Point, Point, string), got (%s, %s, %s).',
-      types.typeof(start),
-      types.typeof(end),
-      types.typeof(text));
+      types.isPoint(start) && types.isPoint(end),
+      'TCharts: constructor props of RectText should be (Point, Point, any), got (%s, %s, %s).',
+      types.typeOf(start),
+      types.typeOf(end),
+      types.typeOf(text));
     // 校验通过，赋值属性
     this.start = start;
     this.end = end;

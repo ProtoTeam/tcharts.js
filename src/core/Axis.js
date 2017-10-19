@@ -35,9 +35,9 @@ class Axis extends Element {
     invariant(
       types.isPoint(point0) && types.isPoint(pointX) && types.isPoint(pointY),
       'TCharts: constructor props of Axis should be (Point, Point, Point), got (%s, %s, %s).',
-      types.typeof(point0),
-      types.typeof(pointX),
-      types.typeof(pointY));
+      types.typeOf(point0),
+      types.typeOf(pointX),
+      types.typeOf(pointY));
 
     invariant(
       point0.y === pointX.y,

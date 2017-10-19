@@ -71,5 +71,15 @@ module.exports = (Table) => {
             ['#4', '明日花绮罗'],
         ]);
         console.log(table.string());
+
+      table = new Table(0.5); // set gap rate = 0.5
+      table.setData([
+        ['標識符', '名字', '生日'],
+        ['#1', '圖靈', 24],
+        ['#2', '潘金蓮', false],
+        ['#3', '西門慶', null],
+        ['#4', '明日花绮罗'],
+      ]);
+      console.log(table.string());
     });
 };

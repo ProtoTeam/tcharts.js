@@ -27,8 +27,8 @@ class Rect extends Element {
     invariant(
       types.isPoint(start) && types.isPoint(end),
       'TCharts: constructor props of Rect should be (Point, Point), got (%s, %s).',
-      types.typeof(start),
-      types.typeof(end));
+      types.typeOf(start),
+      types.typeOf(end));
     // 校验通过，赋值属性
     this.start = start;
     this.end = end;

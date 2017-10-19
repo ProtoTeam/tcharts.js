@@ -18,8 +18,8 @@ class Point extends Element {
     invariant(
       types.isNumber(x) && types.isNumber(y),
       'TCharts: constructor props of Point should be (number, number), got (%s, %s).',
-      types.typeof(x),
-      types.typeof(y));
+      types.typeOf(x),
+      types.typeOf(y));
 
     this.x = x;
     this.y = y;

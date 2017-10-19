@@ -9,21 +9,71 @@
 
 > npm i -S tcharts.js
 
+
+### Table
+
 ```js
 const TCharts = require('tcharts.js');
-const { Bar, HBar, Box, Table } = TCharts；
+const { Table } = TCharts；
 
-const box = new Box(60, 20); // instance the chart with options.
+const table = new Table(0.2); // set gap rate = 0.2
+table.setData([
+  ['標識符', '名字', '生日'],
+  ['#1', '圖靈', 24],
+  ['#2', '潘金蓮', false],
+  ['#3', '西門慶', null],
+  ['#4', '明日花绮罗'],
+]);
+console.log(table.string());
+```
+
+### Bar
+
+```js
+const TCharts = require('tcharts.js');
+const { Bar } = TCharts；
+
+const bar = new Bar();
+bar.setData([
+  {value:100, name:'A'},
+  {value:45, name:'B'},
+  {value:70, name:'C'},
+  {value:30, name:'D'},
+]);
+console.log(bar.string());
+```
+
+### HBar
+
+```js
+const TCharts = require('tcharts.js');
+const { HBar } = TCharts；
+
+const hbar = new HBar();
+hbar.setData([
+  {value: 100, name: 'A'},
+  {value: 45, name: 'B'},
+  {value: 70, name: 'C'},
+  {value: 30, name: 'D'},
+]);
+console.log(hbar.string());
+
+```
+
+### Box
+
+```js
+const TCharts = require('tcharts.js');
+const { Box } = TCharts；
+
+const box = new Box(60, 20); // width, height
 box.setData([
   {value:100, name:'A'},
   {value:100, name:'B'},
   {value:100, name:'C'},
-  {value:100, name:'你好'},
+  {value:100, name:'Hello'},
 ]);
-
-const boxString = box.string();
-
-console.log(chartString);
+console.log(box.string());
 ```
 
 

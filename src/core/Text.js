@@ -3,7 +3,7 @@
  */
 
 const evenly = require('evenly');
-const { wordWidth } = require('../utils/string');
+const { wordWidth, toString } = require('../utils/string');
 const invariant = require('../utils/invariant');
 const types = require('../utils/types');
 const { fillMatrix } = require('../utils/array');
@@ -18,17 +18,17 @@ class Text extends Element {
   constructor(p, text, align = 'center') {
     super();
     invariant(
-      types.isPoint(p) && types.isString(text),
-      'TCharts: constructor props of Text should be (Point, string), got (%s, %s).',
-      types.typeof(p),
-      types.typeof(text));
+      types.isPoint(p),
+      'TCharts: constructor props of Text should be (Point, any), got (%s, %s).',
+      types.typeOf(p),
+      types.typeOf(text));
 
     invariant(
       ['center', 'left', 'right'].indexOf(align) >= 0,
       'TCharts: constructor props `align` of Text should be one of [\'center\', \'left\', \'right\'], got %s.',
       align);
     this.p = p;
-    this.text = text;
+    this.text = toString(text);
     this.align = align;
 
 

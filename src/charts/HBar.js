@@ -2,7 +2,6 @@
  * Created by hustcc.
  */
 
-const VT = require('variable-type');
 const Chart = require('./Chart');
 const invariant = require('../utils/invariant');
 const { round } = require('../utils/number');
@@ -44,7 +43,7 @@ class HBar extends Chart {
 
   setData = (data) => {
     invariant(
-      VT.check(data, HBAR_DATA_TYPE),
+      HBAR_DATA_TYPE.check(data),
       'TCharts: data of `HBar` chart should be type of Array.'
     );
     this.data = data;

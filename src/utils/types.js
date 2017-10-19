@@ -6,24 +6,27 @@ const VT = require('variable-type');
 const what = require('what.js');
 
 
-const isNumber = v => VT.check(v, VT.number);
+const isNumber = v => VT.number.check(v);
 
-const isString = v => VT.check(v, VT.string);
+const isString = v => VT.string.check(v);
 
-const isArray = v => VT.check(v, VT.array);
+const isArray = v => VT.array.check(v);
 
-const isObject = v => VT.check(v, VT.object);
+const isObject = v => VT.object.check(v);
 
-const isBool = v => VT.check(v, VT.bool);
+const isBool = v => VT.bool.check(v);
 
-const isEmpty = v => VT.check(v, VT.or([
+const isEmpty = v => VT.or([
   VT.null,
   VT.undefined
-]));
+]).check(v);
 
 const isPoint = v => v.CLASSNAME === 'Point';
 
-const typeOf = v => v.CLASSNAME || what(v);
+const typeOf = (v) => {
+  if (v && v.CLASSNAME) return v.CLASSNAME;
+  return what(v);
+};
 
 module.exports = {
   isNumber,
@@ -33,5 +36,5 @@ module.exports = {
   isBool,
   isEmpty,
   isPoint,
-  typeof: typeOf,
+  typeOf,
 };

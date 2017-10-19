@@ -30,8 +30,8 @@ class Line extends Element {
     invariant(
       types.isPoint(start) && types.isPoint(end),
       'TCharts: constructor props of Line should be (Point, Point), got (%s, %s).',
-      types.typeof(start),
-      types.typeof(end));
+      types.typeOf(start),
+      types.typeOf(end));
     // 控制台模式下，仅仅只能输入横线或者竖线
     invariant(
       start.x === end.x || start.y === end.y,

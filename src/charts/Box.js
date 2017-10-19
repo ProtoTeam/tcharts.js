@@ -2,7 +2,6 @@
  * Created by hustcc.
  */
 
-const VT = require('variable-type');
 const areaDivide = require('area-divide');
 const Chart = require('./Chart');
 const { toPercent } = require('../utils/number');
@@ -40,7 +39,7 @@ class Box extends Chart {
 
   setData = (data) => {
     invariant(
-      VT.check(data, BOX_DATA_TYPE),
+      BOX_DATA_TYPE.check(data),
       'TCharts: data of `Box` chart should be type of Array.'
     );
     this.data = data;

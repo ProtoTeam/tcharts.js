@@ -2,7 +2,6 @@
  * Created by hustcc.
  */
 
-const VT = require('variable-type');
 const Chart = require('./Chart');
 const invariant = require('../utils/invariant');
 const { round } = require('../utils/number');
@@ -51,7 +50,7 @@ class Bar extends Chart {
 
   setData = (data) => {
     invariant(
-      VT.check(data, BAR_DATA_TYPE),
+      BAR_DATA_TYPE.check(data),
       'TCharts: data of `Bar` chart should be type of Array.'
     );
     this.data = data;

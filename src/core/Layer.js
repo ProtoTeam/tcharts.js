@@ -21,9 +21,9 @@ class Layer {
     invariant(
       types.isObject(box) && types.isArray(ascii) && types.isNumber(zIndex),
       'TCharts: constructor props of Layer should be (object, array, number), got (%s, %s, %s).',
-      types.typeof(box),
-      types.typeof(ascii),
-      types.typeof(zIndex));
+      types.typeOf(box),
+      types.typeOf(ascii),
+      types.typeOf(zIndex));
 
     this.box = box;
     this.ascii = ascii;

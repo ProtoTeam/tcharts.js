@@ -3,7 +3,6 @@
  */
 
 const iu = require('immutability-util');
-const VT = require('variable-type');
 
 const Chart = require('./Chart');
 const invariant = require('../utils/invariant');
@@ -95,7 +94,7 @@ class Table extends Chart {
 
   setData = (data) => {
     invariant(
-      VT.check(data, TABLE_DATA_TYPE),
+      TABLE_DATA_TYPE.check(data),
       'TCharts: data of `Table` chart should be type of matrix Array.'
     );
     const { row, col } = this._getRowAndCol(data);
