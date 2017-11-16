@@ -2,7 +2,33 @@
 
 > [TCharts.js](http://tcharts.org) is a Lightweight and fast terminal ASCII charts for nodejs and browser.
 
-[![Ver](https://img.shields.io/npm/v/tcharts.js.svg)](https://www.npmjs.com/package/tcharts.js) [![Build Status](https://travis-ci.org/TCharts/tcharts.js.svg?branch=master)](https://travis-ci.org/TCharts/tcharts.js) [![Coverage Status](https://coveralls.io/repos/github/TCharts/tcharts.js/badge.svg?branch=master)](https://coveralls.io/github/TCharts/tcharts.js)
+[![Ver](https://img.shields.io/npm/v/tcharts.js.svg)](https://www.npmjs.com/package/tcharts.js) [![Build Status](https://travis-ci.org/ProtoTeam/tcharts.js.svg?branch=master)](https://travis-ci.org/ProtoTeam/tcharts.js) [![Coverage Status](https://coveralls.io/repos/github/ProtoTeam/tcharts.js/badge.svg?branch=master)](https://coveralls.io/github/ProtoTeam/tcharts.js)
+
+```
+    +--------------+----------------------+---------------------+
+    |              |                      |                     |
+    |              |                      |                     |
+    |              |                      |                     |
+    |              |                      |                     |
+    |              |                      |                     |
+    |              |                      |                     |
+    |              |        C:25%         |      Hello:25%      |
+    |              |                      |                     |
+    |              |                      |                     |
+    |    A:25%     |                      |                     |
+    |              |                      |                     |
+    |              |                      |                     |
+    |              +----------------------+---------------------+
+    |              |                                            |
+    |              |                                            |
+    |              |                                            |
+    |              |                   B:25%                    |
+    |              |                                            |
+    |              |                                            |
+    +--------------+--------------------------------------------+
+
+```
+
 
 ## 1. Install & Usage
 
