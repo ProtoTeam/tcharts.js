@@ -2,12 +2,11 @@
  * Created by hustcc.
  */
 
-const iu = require('immutability-util');
-
 const Chart = require('./Chart');
 const invariant = require('../utils/invariant');
 const RectText = require('../core/RectText');
 const Point = require('../core/Point');
+const { arrayClone } = require('../utils/array');
 const { wordWidth } = require('../utils/string');
 const { round } = require('../utils/number');
 const { TABLE_DATA_TYPE } = require('../const');
@@ -71,15 +70,15 @@ class Table extends Chart {
 
   // 填充数据（对于有空缺的数据）
   _fullFillData = (data, row, col) => {
-    const iuData = iu(data);
+    const cloneData = arrayClone(data);
     // 遍历来填充数据
     data.forEach((d, index) => {
       if (col > d.length) {
         // 补充一些空的文本
-        iuData.$push([index], new Array(col - d.length).fill(''));
+        cloneData[index].splice(cloneData[index].length, 0, ...new Array(col - d.length).fill(''));
       }
     });
-    return iuData.value();
+    return cloneData;
   };
 
   _calTableSizes = (colSizes, row, col) => {
@@ -98,8 +97,7 @@ class Table extends Chart {
       'TCharts: data of `Table` chart should be type of matrix Array.'
     );
     const { row, col } = this._getRowAndCol(data);
-    const updatedData = this._fullFillData(data, row, col);
-    this.data = updatedData;
+    this.data = this._fullFillData(data, row, col);
 
     const colSizes = this._calColSizes(this.data, row, col);
     const { width, height } = this._calTableSizes(colSizes, row, col);

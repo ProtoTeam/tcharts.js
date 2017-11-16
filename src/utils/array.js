@@ -37,7 +37,26 @@ const fillMatrix = (row, col, val) => {
   return res;
 };
 
+/**
+ * deep clone array
+ * @param arr
+ * @returns {*}
+ */
+const arrayClone = (arr) => {
+  let i;
+  let copy;
+  if (Array.isArray(arr)) {
+    copy = arr.slice(0);
+    for (i = 0; i < copy.length; i += 1) {
+      copy[i] = arrayClone(copy[i]);
+    }
+    return copy;
+  }
+  return arr;
+};
+
 module.exports = {
   fillArray,
   fillMatrix,
+  arrayClone,
 };

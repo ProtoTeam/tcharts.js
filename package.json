@@ -57,7 +57,6 @@
     "area-divide": "^0.0.1",
     "evenly": "^1.0.2",
     "fixed-round": "^0.0.1",
-    "immutability-util": "^0.0.4",
     "invariant": "^2.2.2",
     "variable-type": "^0.2.0",
     "what.js": "^1.0.1",
