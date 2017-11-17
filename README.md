@@ -39,7 +39,7 @@
 
 ```js
 const TCharts = require('tcharts.js');
-const { Table } = TCharts；
+const { Table } = TCharts;
 
 const table = new Table(0.2); // set gap rate = 0.2
 table.setData([
@@ -56,7 +56,7 @@ console.log(table.string());
 
 ```js
 const TCharts = require('tcharts.js');
-const { Bar } = TCharts；
+const { Bar } = TCharts;
 
 const bar = new Bar();
 bar.setData([
@@ -72,7 +72,7 @@ console.log(bar.string());
 
 ```js
 const TCharts = require('tcharts.js');
-const { HBar } = TCharts；
+const { HBar } = TCharts;
 
 const hbar = new HBar();
 hbar.setData([
@@ -89,7 +89,7 @@ console.log(hbar.string());
 
 ```js
 const TCharts = require('tcharts.js');
-const { Box } = TCharts；
+const { Box } = TCharts;
 
 const box = new Box(60, 20); // width, height
 box.setData([
